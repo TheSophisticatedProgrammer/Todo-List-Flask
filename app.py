@@ -19,16 +19,21 @@ todos = [
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
+
     if(request.method == 'POST'):
         task_name = request.form['task_name']
         cur_id = random.randint(1, 1000)
 
-        todos.append({
-            'id': cur_id,
-            'name': task_name,
-            'checked': False
-        })
-        return redirect(url_for('home'))
+        if not task_name.strip():
+            return redirect('/')
+
+        else:
+            todos.append({
+                'id': cur_id,
+                'name': task_name,
+                'checked': False
+            })
+            return redirect(url_for('home'))
 
     return render_template('index.html', tasks=todos)
 
@@ -47,6 +52,21 @@ def delete(task_id):
     for task in todos:
         if task['id'] == task_id:
             todos.remove(task)
+    return redirect(url_for('home'))
+
+@app.route('/edit/<int:task_id>', methods=['POST'])
+def edit(task_id):
+
+    global todos
+    new_task_name = request.form['edit-task']
+
+    if not new_task_name.strip():
+            return redirect(url_for('home'))
+
+    for task in todos:
+        if task['id'] == task_id:
+            task['name'] = new_task_name
+
     return redirect(url_for('home'))
 
 if __name__ == '__main__':

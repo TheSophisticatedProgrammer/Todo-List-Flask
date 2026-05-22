@@ -29,6 +29,11 @@
             <form action="{{ url_for('delete', task_id=task.id) }}" method="POST">
                 <button>Delete</button>
             </form>
+            
+            <form action="{{ url_for('edit', task_id=task.id) }}" method="POST" class="edit-form">
+                <input type="text" id="id-edit-task" name="edit-task" value="{{ task.name }}" required>
+                <button type="submit" id="button-edit">Update</button>
+            </form>
 
         </div>
     </div>
