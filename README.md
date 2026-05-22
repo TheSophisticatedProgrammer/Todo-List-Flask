@@ -1,43 +1,42 @@
-# Todo-List-Flask
+# Flask To-Do List Web Application
 
-A simple todo list web app built with Python and Flask.
+A full-stack Python web application engineered with Flask to create, track, edit, and manage task lists through a browser interface.
 
 ## Features
 
-- Add tasks
-- Mark tasks as complete with a checkbox
-- Delete tasks
-- Clean responsive UI with CSS
+- **Full Lifecycle Task Management**: Add new items, update text on existing items, toggle completion states, and wipe out entries.
+- **Form Input Interception**: Rejects whitespace and empty submissions to prevent broken entries.
+- **RESTful Pattern Architecture**: Separates mutation pathways cleanly across explicit POST-based endpoint targets (`/checked/<id>`, `/delete/<id>`, `/edit/<id>`).
 
-## Tech Stack
+## Prerequisites
 
-- Python 3
-- Flask
-- Jinja2 templates
-- HTML/CSS
+- Python 3.x
+- Flask Framework
 
-## How to Run
-
-1. Install dependencies:
-```
+```bash
 pip install flask
 ```
 
-2. Run the app:
-```
-python app.py
-```
+## Project Directory Structure
 
-3. Open your browser and go to `localhost:5000`
-
-## Project Structure
-
-```
-├── app.py
-├── static/
-│   └── css/
-│       └── style.css
+Ensure your folder architecture matches this layout before running:
+```text
+├── main.py
 └── templates/
-    ├── base.html
     └── index.html
 ```
+
+## How to Run
+
+1. Save the code to a file named `main.py`.
+2. Ensure your matching template file resides at `templates/index.html`.
+3. Boot the local development server:
+   ```bash
+   python main.py
+   ```
+4. Open your web browser and navigate to: `http://127.0.0`
+
+## Technical Details
+
+- **Memory State Engine**: Retains structural dictionary nodes inside an internal variable list during engine runtime execution.
+- **Form Handling Data Bindings**: Extracts incoming browser text elements safely using key-indexed standard lookups against the `request.form` mapping payload.
